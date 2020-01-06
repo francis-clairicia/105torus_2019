@@ -2,4 +2,6 @@
 
 import sys
 
-sys.exit(84)
+from error_handling.error_handler import error_handler
+
+error_handler()
