@@ -1,4 +1,11 @@
-#!/usr/bin/env python3
+#! /bin/python3
+# -*- coding: Utf-8 -*
+##
+## EPITECH PROJECT, 2019
+## 105torus_2019
+## File description:
+## 105torus
+##
 
 import sys
 
@@ -9,32 +16,32 @@ from methods.bisection import bisection
 from methods.newton import newton
 from methods.secant import secant
 
-def table_lookup(shape_arg) :
-    table = ["1", "2", "3"]
-
-    for i in range(0, 3) :
-        if shape_arg == table[i] :
-            return i
-    error_handler()
+FUNC_ARRAY = {
+    "1": bisection,
+    "2": newton,
+    "3": secant
+}
 
 def check_args(argv) :
     try :
         for i in range(1, 8) :
-            int(argv[i])
+            argv[i] = int(argv[i])
     except :
         return False
     return True
 
-ac = len(sys.argv)
+def main(ac, av):
+    if ac == 2 and sys.argv[1] == "-h" :
+        usage()
+        sys.exit(0)
+    if ac != 8 :
+        error_handler()
+    if check_args(av) is False :
+        error_handler()
+    if av[1] not in FUNC_ARRAY:
+        error_handler()
+    FUNC_ARRAY[av[1]]([av[2], av[3], av[4], av[5]], av[6])
+    return (0)
 
-if ac == 2 and sys.argv[1] == "-h" :
-    usage()
-    sys.exit(0)
-if ac != 8 :
-    error_handler()
-if check_args(sys.argv) == False :
-    error_handler()
-index = table_lookup(sys.argv[1])
-func_array = [bisection, newton, secant]
-func_array[index]([int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4]), int(sys.argv[5])], int(sys.argv[6]))
-sys.exit(0)
+if __name__ == "__main__":
+    sys.exit(main(len(sys.argv), sys.argv))

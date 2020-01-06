@@ -1,18 +1,13 @@
-import sys
+# -*- coding: Utf-8 -*
+##
+## EPITECH PROJECT, 2019
+## 105torus_2019
+## File description:
+## error_handler.py
+##
 
-def usage() :
-    usage="""USAGE
-        ./105torus opt a0 a1 a2 a3 a4 n
-    
-    DESCRIPTION
-        opt       method option:
-                      1 for the bisection method
-                      2 for Newton's method
-                      3 for the secant method
-        a[0-4]    coefficients of the equation
-        n         precision (the application of the polynomial to the solution should
-                  be smaller than 10ˆ-n)"""
-    print(usage)
+import sys
+from error_handling.usage import usage
 
 def error_handler() :
     usage()

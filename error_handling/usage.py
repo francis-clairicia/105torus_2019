@@ -1,3 +1,11 @@
+# -*- coding: Utf-8 -*
+##
+## EPITECH PROJECT, 2019
+## 105torus_2019
+## File description:
+## usage.py
+##
+
 def usage() :
     usage="""USAGE
         ./105torus opt a0 a1 a2 a3 a4 n
