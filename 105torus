@@ -2,6 +2,24 @@
 
 import sys
 
+from error_handling.usage import usage
 from error_handling.error_handler import error_handler
 
-error_handler()
+def check_args(argv) :
+    try :
+        for i in range(1, 8) :
+            int(argv[i])
+    except :
+        return False
+    return True
+
+ac = len(sys.argv)
+
+if ac == 2 and sys.argv[1] == "-h" :
+    usage()
+    sys.exit(0)
+if ac != 8 :
+    error_handler()
+if check_args(sys.argv) == False :
+    error_handler()
+sys.exit(0)
