@@ -26,7 +26,7 @@ def bisection(coefficients, n):
         else:
             b = m
         if (m * pow(10, n)) % 10 > 0:
-            value = "x = {0:." + str(n) +"f}"
+            value = "x = {0:." + str(n) + "f}"
         else:
             value = "x = {0}"
         print(value.format(round(m, n)))
