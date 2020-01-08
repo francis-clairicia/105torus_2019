@@ -17,9 +17,9 @@ from methods.newton import newton
 from methods.secant import secant
 
 FUNC_ARRAY = {
-    "1": bisection,
-    "2": newton,
-    "3": secant
+    1: bisection,
+    2: newton,
+    3: secant
 }
 
 def check_args(argv) :
@@ -34,13 +34,13 @@ def main(ac, av):
     if ac == 2 and sys.argv[1] == "-h" :
         usage()
         sys.exit(0)
-    if ac != 8 :
+    if ac != 8:
         error_handler()
     if check_args(av) is False :
         error_handler()
     if av[1] not in FUNC_ARRAY:
         error_handler()
-    FUNC_ARRAY[av[1]]([av[2], av[3], av[4], av[5]], av[6])
+    FUNC_ARRAY[av[1]]([av[2], av[3], av[4], av[5], av[6]], av[7])
     return (0)
 
 if __name__ == "__main__":
