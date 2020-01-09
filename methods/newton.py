@@ -6,6 +6,7 @@
 ## newton.py
 ##
 
+import sys
 from math import pow
 
 def newton(coefficients, n) :
@@ -32,8 +33,11 @@ def newton(coefficients, n) :
         if save == 0 :
             break
         xnext -= f(xn) / save
-        if (xn * pow(10, n)) % 10 > 0 :
-            value = "x = {0:." + str(n) + "f}"
-        else:
-            value = "x = {0}"
+        try:
+            if (xn * pow(10, n)) % 10 > 0 :
+                value = "x = {0:." + str(n) + "f}"
+            else:
+                value = "x = {0}"
+        except OverflowError:
+            sys.exit(84)
         print(value.format(round(xn, n)))

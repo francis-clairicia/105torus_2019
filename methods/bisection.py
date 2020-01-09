@@ -6,6 +6,7 @@
 ## bisection.py
 ##
 
+import sys
 from math import pow
 
 def bisection(coefficients, n):
@@ -25,8 +26,11 @@ def bisection(coefficients, n):
             a = m
         else:
             b = m
-        if (m * pow(10, n)) % 10 > 0:
-            value = "x = {0:." + str(n) + "f}"
-        else:
-            value = "x = {0}"
+        try:
+            if (m * pow(10, n)) % 10 > 0:
+                value = "x = {0:." + str(n) + "f}"
+            else:
+                value = "x = {0}"
+        except OverflowError:
+            sys.exit(84)
         print(value.format(round(m, n)))
