@@ -8,6 +8,7 @@
 
 import sys
 from math import pow
+from error_handling.error_handler import error_handler
 
 def bisection(coefficients, n):
     a0 = coefficients[0]
@@ -32,5 +33,5 @@ def bisection(coefficients, n):
             else:
                 value = "x = {0}"
         except OverflowError:
-            sys.exit(84)
+            error_handler()
         print(value.format(round(m, n)))
