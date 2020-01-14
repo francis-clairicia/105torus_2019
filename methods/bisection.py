@@ -19,18 +19,19 @@ def bisection(coefficients, n):
 
     a = 0
     b = 1
+    if ((f(a) < 0 and f(b) > 0) or (f(a) > 0 and f(b) < 0)) is False:
+        sys.exit(84)
     p = pow(10, -n)
-    while (b - a) > p:
+    solutions = list()
+    while (b - a) >= p:
         m = (a + b) / 2
+        if 0 <= m <= 1:
+            solutions.append(m)
+        else:
+            sys.exit(84)
         if f(m) < 0:
             a = m
         else:
             b = m
-        try:
-            if (m * pow(10, n)) % 10 > 0:
-                value = "x = {0:." + str(n) + "f}"
-            else:
-                value = "x = {0}"
-        except OverflowError:
-            sys.exit(84)
-        print(value.format(round(m, n)))
+    for x in solutions:
+        print("x = {0}".format(round(x, n)))

@@ -6,10 +6,9 @@
 ## newton.py
 ##
 
-import sys
 from math import pow
 
-def newton(coefficients, n) :
+def newton(coefficients, n):
     a0 = coefficients[0]
     a1 = coefficients[1]
     a2 = coefficients[2]
@@ -21,23 +20,16 @@ def newton(coefficients, n) :
     xn = 0.5
     print("x = {}".format(xn))
     save = derivated(xn)
-    if save == 0 :
+    if save == 0:
         return
     xnext = xn - (f(xn) / save)
     while round(xn, n) != round(xnext, n):
         save = derivated(xn)
-        if save == 0 :
+        if save == 0:
             break
         xn -= f(xn) / save
         save = derivated(xn)
-        if save == 0 :
+        if save == 0:
             break
         xnext -= f(xn) / save
-        try:
-            if (xn * pow(10, n)) % 10 > 0 :
-                value = "x = {0:." + str(n) + "f}"
-            else:
-                value = "x = {0}"
-        except OverflowError:
-            sys.exit(84)
-        print(value.format(round(xn, n)))
+        print("x = {0}".format(round(xn, n)))
