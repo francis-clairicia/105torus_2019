@@ -7,6 +7,7 @@
 ##
 
 from math import pow
+from error_handling.error_handler import error_handler
 
 def newton(coefficients, n):
     a0 = coefficients[0]

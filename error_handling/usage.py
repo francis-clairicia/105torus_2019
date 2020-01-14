@@ -11,12 +11,12 @@ USAGE="""USAGE
 
 DESCRIPTION
     opt       method option:
-                    1 for the bisection method
-                    2 for Newton's method
-                    3 for the secant method
+                  1 for the bisection method
+                  2 for Newton's method
+                  3 for the secant method
     a[0-4]    coefficients of the equation
     n         precision (the application of the polynomial to the solution should
-                be smaller than 10^-n)"""
+              be smaller than 10^-n)"""
 
 def usage() :
     print(USAGE)
