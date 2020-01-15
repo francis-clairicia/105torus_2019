@@ -8,7 +8,6 @@
 
 import sys
 from math import pow
-from error_handling.error_handler import error_handler
 
 def bisection(coefficients, n):
     a0 = coefficients[0]
@@ -30,7 +29,7 @@ def bisection(coefficients, n):
             solutions.append(m)
         else:
             sys.exit(84)
-        if f(m) < 0:
+        if f(m) * f(a) >= 0:
             a = m
         else:
             b = m
