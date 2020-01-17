@@ -6,6 +6,7 @@
 ## secant.py
 ##
 
+import sys
 from math import pow
 
 def secant(coefficients, n):
@@ -22,8 +23,10 @@ def secant(coefficients, n):
     x2 = -1
     while round(x2, n) != round(x, n):
         x = x2
-        x2 = x1 - (f(x1) * (x1 - x0) / (f(x1) - f(x0)))
-        value = "x = {0:." + str(n) + "f}"
-        print(value.format(round(x2, n)))
+        try:
+            x2 = x1 - (f(x1) * (x1 - x0) / (f(x1) - f(x0)))
+        except ZeroDivisionError:
+            sys.exit(84)
+        print("x = " + str(round(x2, n + 1))[:n + 2])
         x0 = x1
         x1 = x2

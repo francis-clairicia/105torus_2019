@@ -6,6 +6,7 @@
 ## newton.py
 ##
 
+import sys
 from math import pow
 
 def newton(coefficients, n):
@@ -20,16 +21,16 @@ def newton(coefficients, n):
     xn = 0.5
     print("x = {}".format(xn))
     save = derivated(xn)
-    if save == 0:
-        return
     xnext = xn - (f(xn) / save)
     while round(xn, n) != round(xnext, n):
         save = derivated(xn)
-        if save == 0:
-            break
-        xn -= f(xn) / save
+        try:
+            xn -= f(xn) / save
+        except ZeroDivisionError:
+            sys.exit(84)
         save = derivated(xn)
-        if save == 0:
-            break
-        xnext -= f(xn) / save
-        print("x = {0}".format(round(xn, n)))
+        try:
+            xnext -= f(xn) / save
+        except ZeroDivisionError:
+            sys.exit(84)
+        print("x = " + str(round(xn, n + 1))[:n + 2])
