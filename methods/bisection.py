@@ -19,7 +19,7 @@ def bisection(coefficients, n):
 
     a = 0
     b = 1
-    if ((f(a) < 0 and f(b) > 0) or (f(a) > 0 and f(b) < 0)) is False:
+    if f(a) * f(b) >= 0:
         sys.exit(84)
     p = pow(10, -n)
     solutions = list()

@@ -9,6 +9,6 @@
 import sys
 from error_handling.usage import usage
 
-def error_handler() :
+def error_handler():
     usage()
     sys.exit(84)

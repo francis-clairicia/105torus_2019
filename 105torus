@@ -22,28 +22,28 @@ FUNC_ARRAY = {
     3: secant
 }
 
-def check_args(argv) :
-    try :
-        for i in range(1, 8) :
+def check_args(argv):
+    try:
+        for i in range(1, 8):
             argv[i] = int(argv[i])
-    except :
+    except ValueError:
         return False
     return True
 
 def main(ac, av):
-    if ac == 2 and sys.argv[1] == "-h" :
+    if ac == 2 and sys.argv[1] == "-h":
         usage()
         sys.exit(0)
     if ac != 8:
         error_handler()
-    if check_args(av) is False :
+    if check_args(av) is False:
         error_handler()
     if av[1] not in FUNC_ARRAY:
         error_handler()
-    if av[7] < 0 :
+    if av[7] < 0:
         error_handler()
     FUNC_ARRAY[av[1]]([av[2], av[3], av[4], av[5], av[6]], av[7])
-    return (0)
+    return 0
 
 if __name__ == "__main__":
     sys.exit(main(len(sys.argv), sys.argv))

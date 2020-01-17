@@ -6,7 +6,7 @@
 ## usage.py
 ##
 
-USAGE="""USAGE
+USAGE = """USAGE
     ./105torus opt a0 a1 a2 a3 a4 n
 
 DESCRIPTION
@@ -18,5 +18,5 @@ DESCRIPTION
     n         precision (the application of the polynomial to the solution should
               be smaller than 10^-n)"""
 
-def usage() :
+def usage():
     print(USAGE)
