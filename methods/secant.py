@@ -27,6 +27,11 @@ def secant(coefficients, n):
             x2 = x1 - (f(x1) * (x1 - x0) / (f(x1) - f(x0)))
         except ZeroDivisionError:
             sys.exit(84)
-        print("x = " + str(round(x2, n + 1))[:n + 2])
+        value = round(x2, n)
+        if value == x2:
+            v_format = "x = {0}"
+        else:
+            v_format = "x = {0:." + str(n) + "f}"
+        print(v_format.format(value))
         x0 = x1
         x1 = x2

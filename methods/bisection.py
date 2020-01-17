@@ -34,4 +34,9 @@ def bisection(coefficients, n):
         else:
             b = m
     for x in solutions:
-        print("x = " + str(round(x, n + 1))[:n + 2])
+        value = round(x, n)
+        if value == x:
+            v_format = "x = {0}"
+        else:
+            v_format = "x = {0:." + str(n) + "f}"
+        print(v_format.format(value))

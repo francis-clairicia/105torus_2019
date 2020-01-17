@@ -33,4 +33,9 @@ def newton(coefficients, n):
             xnext -= f(xn) / save
         except ZeroDivisionError:
             sys.exit(84)
-        print("x = " + str(round(xn, n + 1))[:n + 2])
+        value = round(xn, n)
+        if value == xn:
+            v_format = "x = {0}"
+        else:
+            v_format = "x = {0:." + str(n) + "f}"
+        print(v_format.format(value))
