@@ -19,22 +19,25 @@ def newton(coefficients, n):
     derivated = lambda x: (4 * a4 * pow(x, 3)) + (3 * a3 * pow(x, 2)) + (2 * a2 * x) + a1
 
     xn = 0.5
-    print("x = {}".format(xn))
-    save = derivated(xn)
-    xnext = xn - (f(xn) / save)
-    while round(xn, n) != round(xnext, n):
-        save = derivated(xn)
+    solutions = [xn]
+    try:
+        xnext = xn - (f(xn) / derivated(xn))
+    except ZeroDivisionError:
+        sys.exit(84)
+    p = pow(10, -n)
+    while abs(xnext - xn) >= p:
         try:
-            xn -= f(xn) / save
+            xn -= f(xn) / derivated(xn)
+            xnext -= f(xn) / derivated(xn)
+            if (0 <= xn <= 1) is False:
+                sys.exit(84)
         except ZeroDivisionError:
             sys.exit(84)
-        save = derivated(xn)
-        try:
-            xnext -= f(xn) / save
-        except ZeroDivisionError:
-            sys.exit(84)
-        value = round(xn, n)
-        if value == xn:
+        else:
+            solutions.append(xn)
+    for x in solutions:
+        value = round(x, n)
+        if value == x:
             v_format = "x = {0}"
         else:
             v_format = "x = {0:." + str(n) + "f}"

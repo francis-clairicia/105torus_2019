@@ -23,7 +23,7 @@ def bisection(coefficients, n):
         sys.exit(84)
     p = pow(10, -n)
     solutions = list()
-    while (b - a) >= p:
+    while abs(b - a) >= p:
         m = (a + b) / 2
         if 0 <= m <= 1:
             solutions.append(m)
