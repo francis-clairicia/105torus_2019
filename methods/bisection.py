@@ -35,4 +35,3 @@ def bisection(a0, a1, a2, a3, a4, n):
         else:
             v_format = "x = {0:." + str(n) + "f}"
         print(v_format.format(value))
-    return 0
