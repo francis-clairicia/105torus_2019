@@ -16,7 +16,7 @@ def secant(a0, a1, a2, a3, a4, n):
     x0 = Decimal(0)
     x1 = Decimal(1)
     solutions = list()
-    getcontext().prec = n + 1
+    getcontext().prec = n
     p = pow(10, -n)
     while abs(x1 - x0) >= p:
         try:
