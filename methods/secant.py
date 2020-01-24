@@ -8,15 +8,13 @@
 
 import sys
 from math import pow
-from decimal import Decimal, getcontext
 
 def secant(a0, a1, a2, a3, a4, n):
-    f = lambda x: Decimal(a4 * pow(x, 4)) + Decimal(a3 * pow(x, 3)) + Decimal(a2 * pow(x, 2)) + Decimal(a1 * x) + Decimal(a0)
+    f = lambda x: (a4 * pow(x, 4)) + (a3 * pow(x, 3)) + (a2 * pow(x, 2)) + (a1 * x) + (a0)
 
-    x0 = Decimal(0)
-    x1 = Decimal(1)
+    x0 = 0
+    x1 = 1
     solutions = list()
-    getcontext().prec = n
     p = pow(10, -n)
     while abs(x1 - x0) >= p:
         try:
