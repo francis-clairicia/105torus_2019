@@ -11,6 +11,7 @@ from math import pow
 
 def secant(a0, a1, a2, a3, a4, n):
     f = lambda x: (a4 * pow(x, 4)) + (a3 * pow(x, 3)) + (a2 * pow(x, 2)) + (a1 * x) + a0
+    derivated = lambda x: (4 * a4 * pow(x, 3)) + (3 * a3 * pow(x, 2)) + (2 * a2 * x) + a1
 
     x0 = 0
     x1 = 1
@@ -20,6 +21,8 @@ def secant(a0, a1, a2, a3, a4, n):
         try:
             x2 = x1 - (f(x1) * (x1 - x0) / (f(x1) - f(x0)))
         except ZeroDivisionError:
+            sys.exit(84)
+        if round(derivated(x2), n) == 0:
             sys.exit(84)
         solutions.append(x2)
         x0 = x1
