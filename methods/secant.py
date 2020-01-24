@@ -10,7 +10,6 @@ import sys
 from math import pow
 
 def secant(a0, a1, a2, a3, a4, n):
-    status = 0
     f = lambda x: (a4 * pow(x, 4)) + (a3 * pow(x, 3)) + (a2 * pow(x, 2)) + (a1 * x) + a0
 
     x0 = 0
@@ -22,15 +21,11 @@ def secant(a0, a1, a2, a3, a4, n):
             x2 = x1 - (f(x1) * (x1 - x0) / (f(x1) - f(x0)))
         except ZeroDivisionError:
             sys.exit(84)
-        if (0 <= x2 <= 1) is False:
-            status = 84
+        # if (0 <= x2 <= 1) is False:
+        #     status = 84
         solutions.append(x2)
         x0 = x1
         x1 = x2
-    if 0 <= x2 <= 1:
-        status = 0
-    if status != 0:
-        return status
     for x in solutions:
         value = round(x, n)
         if value == x:
